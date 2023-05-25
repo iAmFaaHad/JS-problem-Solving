@@ -27,7 +27,7 @@
 //     [6, 7, 5, 2, 4, 2, 1],
 //     [3, 41, 3, 4]
 // ]
-// return> HighestValue > highestValueInside > sumInsideArray;
+// return>highestValueInside > sumInsideArray;
 
 // //problem-14-17
 //  rapidtest(
@@ -324,7 +324,7 @@ function sumOfNumbers(...array) {
     }
     return sum;
 }
-console.log(unlimitedPLus(2, 3, 4, 5, 6, 7, 9, 10, 23, 23))
+console.log(sumOfNumbers(2, 3, 4, 5, 6, 7, 9, 10, 23, 23))
 
 
 // answer-13
@@ -339,14 +339,14 @@ console.log(unlimitedPLus(2, 3, 4, 5, 6, 7, 9, 10, 23, 23))
 // return> highestValueInside > sumInsideArray;
 
 function highestValueInsideArray(arrayOfNumbers) {
-    const outerArrayLen = array.length;
+    const outerArrayLen = arrayOfNumbers.length;
     let higestValue = 0;
     for (let indexOfOuterArray = 0; indexOfOuterArray < outerArrayLen;
         indexOfOuterArray++) {
         // console.log(array[indexOfArray]); 
-        const innerArrayLen = array[indexOfOuterArray].length;
+        const innerArrayLen = arrayOfNumbers[indexOfOuterArray].length;
         for (let indexOfInnerArray = 0; indexOfInnerArray < innerArrayLen; indexOfInnerArray++) {
-            const elementInNestedArray = array[indexOfOuterArray][indexOfInnerArray];
+            const elementInNestedArray = arrayOfNumbers[indexOfOuterArray][indexOfInnerArray];
             // console.log(array[indexOfOuterArray][indexOfInnerArray]);
             if (elementInNestedArray > higestValue) {
                 higestValue = elementInNestedArray;
@@ -357,7 +357,6 @@ function highestValueInsideArray(arrayOfNumbers) {
     }
     return higestValue;
 }
-
 const arr001 = [
     [1, 32, 4, 5],
     [1],
@@ -367,4 +366,25 @@ const arr001 = [
 ]
 
 console.log(highestValueInsideArray(arr001));
+
+function sumInsideArray(arrayInput) {
+    let innerArraySum = [];
+    let outterArraySum = [innerArraySum];
+    const outerArrayLen = arrayInput.length;
+    for (let outerArrayIndex = 0; outerArrayIndex < outerArrayLen; outerArrayIndex++) {
+        let totalSum = 0;
+
+        const innerArrayLen = arrayInput[outerArrayIndex].length;
+        for (let innerArrayIndex = 0; innerArrayIndex < innerArrayLen; innerArrayIndex++) {
+            totalSum = totalSum + arrayInput[outerArrayIndex][innerArrayIndex]
+        }
+        innerArraySum.push([totalSum]);
+    }
+
+    return outterArraySum;
+}
+
+console.log(sumInsideArray(arr001));
+
+
 
