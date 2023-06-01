@@ -1,60 +1,3 @@
-// problem-1 addPostfix('asdfas', '-') // a-s-d-f-a-s using for loop
-// problem-2 findInArr([22, 3, 3, 2, 2], 3) // true usign for loop
-//problem-3 declare 1 types of mathmatical operation custom function
-//problem-4 write a function that console the parameter using all types of data type
-//problem-5 write a function that accept 2 parameter , first one is a number and second one is also a number and that function returns summation of both number 
-
-
-// problem-6 const arr = [1, 3, 5, 67, 8]
-// output> multiplyArr(arr, 100) // [100, 300, 500, 6700, 800]
-
-// problem-7 findSmallest([32,53,46,56,1,57,2]) // 1
-
-//problem-8 findEvens([3,53,2,63,41,24,634]) // [2, 24, 634]
-//problem-9 findOdds number
-
-// problem-10 crossConcat([1,2,3], [4,5,6]) // [1,4,2,5,3,6]
-
-// problem-11 largest  &&smallest string
-
-// problem-12 unlimitedPLus(...arrPlus)
-
-// problem-13
-// const arr001 = [
-//     [1, 32, 4, 5],
-//     [1],
-//     [3, 45],
-//     [6, 7, 5, 2, 4, 2, 1],
-//     [3, 41, 3, 4]
-// ]
-// return>highestValueInside > sumInsideArray;
-
-// //problem-14-17
-//  rapidtest(
-// //     [
-// //         [1, 2, 5], // 0
-// //         [4, 4, 3, 6], // 1
-// //         [5, 6, 4, 2, 1, 9], // 2
-// //     ]
-// // )
-
-// // 14 task * show the nested array in one flatten array
-
-// // 15 task * show the highest sum inside the the array
-
-// // 16 task *  show the higest length in the array
-
-// // 17 task * show higest number inside the array
-
-// problem- 18 find higest string in array
-// let y = [
-//     ['2,3,53'],
-//     ['2,3,3,345,325'],
-//     ['2,3,3,345,325,3523'],
-//     ['2,3,3,34'],
-//     ['2,3,'],
-//     ['2,3,asdada'],
-// ]
 
 // problem-19
 // let ad = [2, 324, 234, 23, 423, 2342, 123, 1231, 23124, 4, 3534]
@@ -329,13 +272,6 @@ console.log(sumOfNumbers(2, 3, 4, 5, 6, 7, 9, 10, 23, 23))
 
 // answer-13
 // problem - 13
-// const arr001 = [
-//     [1, 32, 4, 5],
-//     [1],
-//     [3, 45],
-//     [6, 7, 5, 2, 4, 2, 1],
-//     [3, 41, 3, 4]
-// ]
 // return> highestValueInside > sumInsideArray;
 
 function highestValueInsideArray(arrayOfNumbers) {
@@ -385,6 +321,178 @@ function sumInsideArray(arrayInput) {
 }
 
 console.log(sumInsideArray(arr001));
+ 
+
+// Problem-14
+// show the nested array in one flatten array
+
+// Answer-14
+function flatMyNestedArray(inputArray) {
+    let flatArray = [];
+    const arrayLen = inputArray.length;
+    for (let indexOfOuterArray = 0; indexOfOuterArray < arrayLen; indexOfOuterArray++) {
+
+        const innerArrayLen = inputArray[indexOfOuterArray].length;
+
+        for (let indexOfInnerArray = 0; indexOfInnerArray < innerArrayLen; indexOfInnerArray++) {
+
+            flatArray.push(inputArray[indexOfOuterArray][indexOfInnerArray])
+        }
+
+    }
+    return flatArray;
+}
+
+// Problem-15
+// show the highest sum inside the the array
+// Answer-15
+
+function findHighestSumOfArray(inputArray) {
+    let highestSum = 0;
+    const outerArrayLen = inputArray.length;
+    for (let indexOfOuterArray = 0; indexOfOuterArray < outerArrayLen; indexOfOuterArray++) {
+        let sum = 0;
+        const innerArrayLen = inputArray[indexOfOuterArray].length;
+        for (let innerArrayIndex = 0; innerArrayIndex < innerArrayLen; innerArrayIndex++) {
+            sum = sum + inputArray[indexOfOuterArray][innerArrayIndex];
+        }
+        if (highestSum < sum) {
+            highestSum = sum;
+        }
+    }
+    return highestSum;
+}
+
+// //Problem-16 
+// Answer-16  show the higest length in the array
+
+function findHigestLengthOfInnerArray(inputArray) {
+    let higerInnerArrayLen = 0;
+    let higestArray = 0;
+
+    const outerArrayLen = inputArray.length;
+    for (let outerArrayIndex = 0; outerArrayIndex < outerArrayLen; outerArrayIndex++) {
+        const innerArrayLen = inputArray[outerArrayIndex].length;
+        for (let innerArrayIndex = 0; innerArrayIndex < innerArrayLen; innerArrayIndex++) {
+            const innerArrayNumber = inputArray[outerArrayIndex];
+            if (innerArrayNumber.length > higerInnerArrayLen) {
+                higerInnerArrayLen = innerArrayNumber.length;
+                higestArray = innerArrayNumber;
+            }
+
+        }
+    }
+    let higerLengthInnerArray = [];
+    higerLengthInnerArray.push(higestArray);
+    higerLengthInnerArray.push("highest Length>" + higerInnerArrayLen)
+    return higerLengthInnerArray;
+}
+
+// Problem-17
+// show higest number inside the array
+//  Answer-17
+
+function findHighestNumberInsideArray(inputArray) {
+    let higestNumber = 0;
+    const outerLen = inputArray.length;
+    for (let outerArrayIndex = 0; outerArrayIndex < outerLen; outerArrayIndex++) {
+        // console.log(inputArray[outerArrayIndex]);
+        // [1, 2, 5],
+        //     [4, 4, 3, 6],
+        //     [5, 6, 4, 2, 1, 9]
+        const innerLen = inputArray[outerArrayIndex].length;
+        for (let innerArrayIndex = 0; innerArrayIndex < innerLen; innerArrayIndex++) {
+            // console.log(innerArrayIndex);
+            // 1, 2, 5
+            if (inputArray[outerArrayIndex][innerArrayIndex] > higestNumber) {
+                higestNumber = inputArray[outerArrayIndex][innerArrayIndex]
+            }
+
+        }
+
+    }
+    return higestNumber + " is the highest Number of this Array";
+}
+
+
+const testingArray = [
+    [1, 2, 5],
+    [4, 4, 3, 6],
+    [5, 6, 4, 2, 22, 9],
+]
+console.log(flatMyNestedArray(testingArray));
+console.log(findHighestSumOfArray(testingArray));
+console.log(findHigestLengthOfInnerArray(testingArray));
+console.log(findHighestNumberInsideArray(testingArray));
+
+// Problem - 18 find higest string in array
+// Answer-18
+function findTheLargestStringInArray(inputArray){
+    
+}
+
+let y = [
+    ['2,3,53'],
+    ['2,3,3,345,325'],
+    ['2,3,3,345,325,3523'],
+    ['2,3,3,34'],
+    ['2,3,'],
+    ['2,3,asdada'],
+]
+
+function flatObject(obj) {
+    let result = {};
+    for (let x in obj) {
+        // console.log(ob);
+        if (typeof obj[x] === "object") {
+            //             d1: {
+            // //         e: 5,
+            // //         f: 6,
+            // //     },
+            // //     d2: {
+            // //         g: 7
+            // //     },  
+
+            for (let y in obj[x]) {
+                result[y] = obj[x][y]
+
+            }
+        }
+        else {
+            result[x] = obj[x];
+        }
+
+    }
+    return result;
+}
+// input
+const ob = {
+    a: 2,
+    b: 3,
+    c: 4,
+    d1: {
+        e: 5,
+        f: 6
+    },
+    d2: {
+        g: 7
+    },
+    h: 8
+}
+console.log(flatObject(ob));
+
+// output
+// let v = {
+//     a: 2,
+//     b: 3,
+//     c: 4,
+//     e: 5,
+//     f: 6,
+//     g: 7,
+//     h: 8
+// }
+
+
 
 
 
