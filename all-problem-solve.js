@@ -1,49 +1,3 @@
-
-// problem-19
-// let ad = [2, 324, 234, 23, 423, 2342, 123, 1231, 23124, 4, 3534]
-// let targetSingle = 2 > // function isItemExistInArr(arr, targetSingle) // false/true
-
-//  problem-20 >>>// function findElements(arr, targetIndex) // [68, 131]
-
-// let arr = [
-//     13, 32, 4346, 67, 68, 32, 131, 23
-// ]
-
-// let targetIndex = [4, 6]
-
-//problem-21
-// let a = [
-//     [2, 'khalid'],
-//     [3, 'jarar'],
-//     [4, 'kaka'],
-//     [5, 'amor']
-// ]
-
-// let target = [5, 4]
-
-// function findElements2(arr, target) // [[4,'kaka'], [5, 'amor']]
-
-//problem-22> merge two array such way the elements are all unique and sort them
-// arr1 = [5, 3, 6, 8, 1]
-// arr2 = [3, 7, 4, 2, 10]
-
-// output = [1, 2, 3, 4, 5, 6, 7, 8, 10]
-
-//problem-23 > get the length of names from array of objects and create a new array
-// input: [
-//  {name: 'bitcode'},
-//  {name: 'bitform'},
-//  {},
-//  {name: 'javascript'},
-//  {name: 'react'},
-// {name: ''}
-// ]
-
-// output: [7, 7, 0, 10, 5]
-
-
-
-
 // ANSWER - Recap:::::
 
 // answer - 1
@@ -321,7 +275,7 @@ function sumInsideArray(arrayInput) {
 }
 
 console.log(sumInsideArray(arr001));
- 
+
 
 // Problem-14
 // show the nested array in one flatten array
@@ -427,18 +381,211 @@ console.log(findHighestNumberInsideArray(testingArray));
 
 // Problem - 18 find higest string in array
 // Answer-18
-function findTheLargestStringInArray(inputArray){
-    
+function findTheLargestStringInArray(inputArray) {
+    let highestStringIndexNumber = 0;
+    let highestString = "";
+    const outerLen = inputArray.length;
+    for (let outerIndex = 0; outerIndex < outerLen; outerIndex++) {
+        // console.log(inputArray[outerIndex]);
+        // ['2,3,53'],
+        //     ['2,3,3,345,325'],
+        const innerLen = inputArray[outerIndex].length;
+        for (let innerIndex = 0; innerIndex < innerLen; innerIndex++) {
+            // console.log(inputArray[outerIndex][innerIndex]);
+            if (inputArray[outerIndex][innerIndex].length > highestStringIndexNumber) {
+                highestStringIndexNumber = inputArray[outerIndex][innerIndex].length;
+                highestString = inputArray[outerIndex][innerIndex]
+            }
+        }
+
+    }
+    return highestString + " > is largest string, in a number > " + highestStringIndexNumber;
 }
 
 let y = [
     ['2,3,53'],
-    ['2,3,3,345,325'],
-    ['2,3,3,345,325,3523'],
+    ['2,3,3,345,3224fs6gknkg6e55'],
+    ['2,3,3,345,325,35277863s3'],
     ['2,3,3,34'],
     ['2,3,'],
-    ['2,3,asdada'],
+    ['2,3,asdada11111111111113'],
 ]
+
+console.log(findTheLargestStringInArray(y));
+
+// Problem-19
+// Answer-19
+// let ad = [2, 324, 234, 23, 423, 2342, 123, 1231, 23124, 4, 3534]
+// let targetSingle = 2 > // function isItemExistInArr(arr, targetSingle) // false/true
+function isItemExistInArray(inputArray, targetNumber) {
+    const indexLen = inputArray.length;
+    let isNumberExist = false;
+    for (let arrayIndex = 0; arrayIndex < indexLen; arrayIndex++) {
+        if (inputArray[arrayIndex] === targetNumber) {
+            isNumberExist = true;
+        }
+        else {
+            false
+        }
+    }
+    return isNumberExist;
+}
+let arrayInput = [324, 234, 23, 423, 2342, 123, 1231, 23124, 4, 3534, 2]
+console.log(isItemExistInArray(arrayInput, 324));
+
+
+//  problem-20 >>>function findElements(arr, targetIndex[4,6]) // [68, 131]
+// Answer-20
+
+function findTheElements(inputArray, targetIndexInArray) {
+    let targetElementInArray = [];
+    const targetArrayLen = targetIndexInArray.length;
+    for (let targetArrayIndex = 0; targetArrayIndex < targetArrayLen; targetArrayIndex++) {
+        const arrayLen = inputArray.length;
+        for (let arrayIndex = 0; arrayIndex < arrayLen; arrayIndex++) {
+            if (targetIndexInArray[targetArrayIndex] === arrayIndex) {
+                targetElementInArray.push(inputArray[arrayIndex]);
+            }
+        }
+    }
+
+    return targetElementInArray;
+}
+
+let arr = [
+    22, 33, "abcd", "d7", 51, 34, "ijkl", 667, 903, "efgh",
+]
+
+let targetIndex = [2, 3, 6, 9]
+console.log(findTheElements(arr, targetIndex));
+
+
+//problem-21 
+// let a = [
+//     [2, 'khalid'],
+//     [3, 'jarar'],
+//     [4, 'kaka'],
+//     [5, 'amor']
+// ]
+
+// let target = [5, 4]
+
+// function findElements2(arr, target) // [[4,'kaka'], [5, 'amor']]
+
+// Answer-21
+
+function findArrayAccordingToIndex(inputArray, targetNumber) {
+    let arrayWithTargetElement = []
+    const targetLen = targetNumber.length;
+    for (let targetNumberIndex = 0; targetNumberIndex < targetLen; targetNumberIndex++) {
+        const outerArrayLen = inputArray.length;
+        for (let outerArrayIndex = 0; outerArrayIndex < outerArrayLen; outerArrayIndex++) {
+            const innerArrayLen = inputArray[outerArrayIndex].length;
+            for (let innerArrayIndex = 0; innerArrayIndex < innerArrayLen; innerArrayIndex++)
+
+                if (targetNumber[targetNumberIndex] === inputArray[outerArrayIndex][innerArrayIndex]) {
+                    arrayWithTargetElement.push(inputArray[outerArrayIndex]);
+
+                }
+        }
+    }
+    return arrayWithTargetElement;
+}
+const givenArray = [
+    [2, 'khalid'],
+    [3, 'jarar'],
+    [4, 'kaka'],
+    [5, 'amor']
+]
+
+let target = [5, 4]
+console.log(findArrayAccordingToIndex(givenArray, target))
+
+
+//problem-22> merge two array such way the elements are all unique
+// arr1 = [5, 3, 6, 8, 1]
+// arr2 = [3, 7, 4, 2, 10]
+
+// output = [7, 4, 2, 10, 5, 3, 6, 8, 1]
+
+// Answer-22
+
+function margeAndUniqueTheArray(inputArray1, inputArray2) {
+    const array1Len = inputArray1.length;
+    for (let indexOfArray1 = 0; indexOfArray1 < array1Len; indexOfArray1++) {
+        let isDuplicate = false;
+        const array2Len = inputArray2.length;
+        for (let indexOfArray2 = 0; indexOfArray2 < array2Len; indexOfArray2++) {
+            if (inputArray2[indexOfArray2] === inputArray1[indexOfArray1]) {
+                isDuplicate = true;
+            }
+        }
+        if (!isDuplicate) {
+            inputArray2.push(inputArray1[indexOfArray1])
+        }
+    }
+    return inputArray2;
+
+}
+
+const arr1 = [5, 3, 6, 8, 1]
+const arr2 = [3, 7, 4, 2, 10]
+console.log(margeAndUniqueTheArray(arr1, arr2));
+
+//problem-23 > get the length of names from array of objects and create a new array
+// input: [
+//  {name: 'bitcode'},
+//  {name: 'bitform'},
+//  {},
+//  {name: 'javascript'},
+//  {name: 'react'},
+// {name: ''}
+// 
+// ]
+
+// output: [{name: 'bitcode', length:""},
+//  {name: 'bitform', length:""},
+//  {},
+//  {name: 'javascript' length:""},
+//  {name: 'react', length:""},
+// {name: '', length:""}
+// ]
+
+// Answer-23
+
+function getTheLengthOfObjectInAnArray(inputArray) {
+
+    for (let indexOfArray = 0; indexOfArray < inputArray.length; indexOfArray++) {
+        if (inputArray[indexOfArray].hasOwnProperty("name")) {
+            inputArray[indexOfArray].length = inputArray[indexOfArray].name.length;
+        }
+        else {
+            inputArray[indexOfArray].notName = undefined;
+            inputArray[indexOfArray].length = 0;
+
+        }
+    }
+    return inputArray;
+}
+
+
+const myNestyObject = [
+    { name: 'bitcode' },
+    { name: 'bitform' },
+    {},
+    { name: 'javascript' },
+    { name: 'react' },
+    { name: '' },
+    { roll: "jk" }
+]
+console.log(getTheLengthOfObjectInAnArray(myNestyObject));
+
+
+
+
+
+// problem-24> Flatten the nested object
+// answer-24
 
 function flatObject(obj) {
     let result = {};
